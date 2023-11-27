@@ -1,0 +1,58 @@
+﻿@model Category
+
+<div class="col d-flex justify-content-center">
+    <div class="card shadow border-2 mt-4 w-50">
+
+        <div class="card-header bg-secondary bg-gradient mt-0 py-3">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="text-white py-2"> Create Category</h2>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-3">
+
+
+            <form method="post">
+
+
+
+                @*  <div asp-validation-summary="All"></div> *@
+
+                <div class="form-floating py-2 col-12 ">
+                    <label asp-for="Name" class="form-label">Name</label>
+                    <input asp-for="Name" class="form-control border-1 shadow" type="text" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <label asp-for="DisplayOrder" class="form-label">Display Order</label>
+                    <input asp-for="DisplayOrder" class="form-control border-1 shadow" type="text" />
+                    <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                </div>
+
+                <br />
+                <div class="col d-flex justify-content-center">
+                    <div class="row btn-group justify-content-center">
+                        <button type="submit" class="btn btn-primary" style="width:100px"><i class="bi bi-patch-plus-fill"></i> Create</button>
+                        <button asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:200px"> <i class="bi bi-arrow-left-circle-fill"></i> Back to Categories</button>
+
+                    </div>
+                </div>
+                
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    @{
+        <partial name="_validationScriptsPartial" />
+    }
+
+}
+        

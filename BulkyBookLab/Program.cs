@@ -1,4 +1,6 @@
-using BulkyBookLab.Data;
+using Bulky.DataAccess.Data;
+using Bulky.DataAccess.Repository;
+using Bulky.DataAccess.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace BulkyBookLab
@@ -14,6 +16,8 @@ namespace BulkyBookLab
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
                  builder.Configuration.GetConnectionString("DefaultConnectionString")
                  ));
+            builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+
             builder.Services.AddRazorPages();
 
             var app = builder.Build();
@@ -35,7 +39,7 @@ namespace BulkyBookLab
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }
